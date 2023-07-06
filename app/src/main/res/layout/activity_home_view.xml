@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#88D5F8"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_home_24"
+        android:layout_gravity="bottom|center"
+        android:layout_marginVertical="15dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your First Name is"
+        android:layout_margin="15dp"
+        android:padding="15dp"
+        android:background="@drawable/custom_drawable2"
+        android:id="@+id/FirstName2"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Email is"
+        android:layout_margin="15dp"
+        android:padding="15dp"
+        android:background="@drawable/custom_drawable2"
+        android:id="@+id/Email2"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Phone number is"
+        android:layout_margin="15dp"
+        android:padding="15dp"
+        android:background="@drawable/custom_drawable2"
+        android:id="@+id/PhoneNumber2"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Password is"
+        android:layout_margin="15dp"
+        android:padding="15dp"
+        android:background="@drawable/custom_drawable2"
+        android:id="@+id/Password2"/>
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Log out?"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="32dp"
+        android:background="@drawable/custom_drawable"
+        android:layout_margin="15dp"
+        />
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
