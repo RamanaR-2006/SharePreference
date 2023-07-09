@@ -9,12 +9,17 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 
 class LoginView : AppCompatActivity() {
     lateinit var user: EditText
     lateinit var pass: EditText
     lateinit var button1: Button
     lateinit var checkBoxRememberMe: CheckBox
+    private lateinit var navHostFragment: NavHostFragment
+    private lateinit var navController: NavController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,6 +33,8 @@ class LoginView : AppCompatActivity() {
 
 
         setContentView(R.layout.activity_login_view)
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
 
         user = findViewById(R.id.User)
         pass = findViewById(R.id.Pass)
@@ -39,6 +46,12 @@ class LoginView : AppCompatActivity() {
         val signup = sharedPreferences.getBoolean("signup", true)
         val rememberMe = sharedPreferences.getBoolean("rememberMe", false)
         checkBoxRememberMe.isChecked = rememberMe
+
+        var button3 = findViewById<Button>(R.id.button2)
+        button3.setOnClickListener {
+            navigateToFragment()
+        }
+
         button1.setOnClickListener {
 
             val username = user.text.toString().trim()
@@ -79,5 +92,9 @@ class LoginView : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+    }
+    private fun navigateToFragment() {
+        val navController = navHostFragment.navController
+        navController.navigate(R.id.fragmentNav)
     }
 }
