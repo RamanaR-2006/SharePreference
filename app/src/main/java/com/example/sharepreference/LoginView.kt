@@ -10,6 +10,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 
 class LoginView : AppCompatActivity() {
@@ -17,8 +18,7 @@ class LoginView : AppCompatActivity() {
     lateinit var pass: EditText
     lateinit var button1: Button
     lateinit var checkBoxRememberMe: CheckBox
-    private lateinit var navHostFragment: NavHostFragment
-    private lateinit var navController: NavController
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +33,17 @@ class LoginView : AppCompatActivity() {
 
 
         setContentView(R.layout.activity_login_view)
-        navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
+
+        val fragment = FragmentNav() // Instantiate your fragment
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+
+        fragmentTransaction.add(R.id.fragmentContainer, fragment) // Add the fragment to the container
+        fragmentTransaction.commit()
+
+
+        val navController = findNavController(R.id.nav_host_fragment)
+
 
         user = findViewById(R.id.User)
         pass = findViewById(R.id.Pass)
@@ -49,7 +58,9 @@ class LoginView : AppCompatActivity() {
 
         var button3 = findViewById<Button>(R.id.button2)
         button3.setOnClickListener {
-            navigateToFragment()
+            Toast.makeText(this, "fragment", Toast.LENGTH_SHORT).show()
+            navController.navigateUp()
+            navController.navigate(R.id.fragmentNav)
         }
 
         button1.setOnClickListener {
@@ -93,8 +104,5 @@ class LoginView : AppCompatActivity() {
             startActivity(intent)
         }
     }
-    private fun navigateToFragment() {
-        val navController = navHostFragment.navController
-        navController.navigate(R.id.fragmentNav)
-    }
+
 }
